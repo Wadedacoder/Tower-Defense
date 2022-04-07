@@ -18,7 +18,7 @@ class Path:
         # Rectangle conversion
         return [pygame.Rect(elem,(1,1)) for elem in set(rectangles)]
 
-    def renderPath(self):
+    def render_path(self):
         for point in self.rectangles:
             point.topleft=(point.x,point.y)
             pygame.draw.rect(window,(0,255,0),point)
@@ -35,6 +35,6 @@ while running_game:
         if event.type == pygame.QUIT:
             running_game = False
     # Drawing the path
-    path.renderPath()
+    path.render_path()
     pygame.display.update()
 pygame.quit()
