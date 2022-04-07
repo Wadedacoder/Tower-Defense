@@ -4,6 +4,7 @@ class Path:
     def __init__(self,level,edges):
         self.level=level
         self.edges=[pygame.Vector2(elem) for elem in edges]
+        self.start=self.edges[0]
         self.end=self.edges[-1]
         self.rectangles=self.calc_rectangles(edges)
 
@@ -18,23 +19,7 @@ class Path:
         # Rectangle conversion
         return [pygame.Rect(elem,(1,1)) for elem in set(rectangles)]
 
-    def render_path(self):
+    def render_path(self,window):
         for point in self.rectangles:
             point.topleft=(point.x,point.y)
             pygame.draw.rect(window,(0,255,0),point)
-
-pygame.init()
-window = pygame.display.set_mode((1000,700)) #Window initialisation
-path=Path(10,[(1,100),(1,500),(700,500)]) # Temp case
-
-# Main loop
-running_game=True
-while running_game:
-    # Exit condition
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running_game = False
-    # Drawing the path
-    path.render_path()
-    pygame.display.update()
-pygame.quit()

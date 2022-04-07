@@ -1,3 +1,5 @@
+import pygame
+
 class Balloon:
     def __init__(self, name: str, hp: int, speed: float, location):
         """
@@ -31,4 +33,14 @@ class Balloon:
 
     def move(self, end_vector):
         """Move the balloon's location by vector"""
-        pass
+        magn = (self.location + end_vector)
+        print("magn is", self.location)
+        print(magn.length())
+        self.location.x += self.speed * (end_vector.x - self.location.x) / magn.magnitude()
+
+    def update_location(self, new_location):
+        self.location = new_location
+    
+    def draw(self, window):
+        # self.location = path.start
+        pygame.draw.rect(window,(255, 255, 255), pygame.Rect(self.location.x, self.location.y, 10, 10))
