@@ -37,7 +37,7 @@ class Tower:
         pygame.draw.rect(window,[255,0,1], self.size)
     
     def update(self,balloons):
-        if self.is_placed and (pygame.time.get_ticks() - self.intial_time) % self.attack_speed == 0:
+        if self.is_placed and (pygame.time.get_ticks() - self.initial_time) % self.attack_speed == 0:
             self.balloon_scanner(balloons)    
         else:
             pass

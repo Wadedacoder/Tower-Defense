@@ -30,12 +30,13 @@ class Balloon:
         else:
             self.hp = round(self.hp - value)
         assert self.hp >= 0
+        print(self.hp)
 
     def move(self, end_vector):
         """Move the balloon's location by vector"""
-        magn = (self.location + end_vector)
-        print("magn is", self.location)
-        print(magn.length())
+        magn = (self.location - end_vector)
+        # print("magn is", self.location)
+        # print(magn.length())
         self.location.x += self.speed * (end_vector.x - self.location.x) / magn.magnitude()
 
     def update_location(self, new_location):
